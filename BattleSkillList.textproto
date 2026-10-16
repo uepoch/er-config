@@ -173,3 +173,18 @@ skill {
   name: "Sea of Fire"
   announce_string: "A sea of fire surrounds {B_PLAYER_NAME}'s team!"
 }
+skill {
+  id: SKILL_ON_ENTRY_DEF_UP_4
+  name: "Fortified Lead"
+  announce_string: "{B_TRAINER1_NAME}'s lead Pokémon\\nfortifies its defenses!"
+}
+skill {
+  id: SKILL_ON_END_TURN_DEF_UP_1
+  name: "Steady Defense"
+  announce_string: "{B_TRAINER1_NAME}'s Pokémon keeps\\nhardening its body!"
+}
+skill {
+  id: SKILL_ON_ENTRY_SPDEF_UP_1
+  name: "Spirit Guard"
+  announce_string: "{B_TRAINER1_NAME}'s Pokémon steels\\nits mind on entry!"
+}

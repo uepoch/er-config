@@ -41920,6 +41920,7 @@ trainer {
       move: MOVE_ICE_SHARD
       move: MOVE_ICE_HAMMER
     }
+    skill: SKILL_ON_ENTRY_SPDEF_UP_1
   }
 }
 trainer {
@@ -47116,6 +47117,8 @@ trainer {
       move: MOVE_HARD_PRESS
       move: MOVE_SCARY_FACE
     }
+    skill: SKILL_ON_ENTRY_DEF_UP_4
+    skill: SKILL_ON_END_TURN_DEF_UP_1
   }
 }
 trainer {
