@@ -10,6 +10,7 @@ import "SpeciesList.proto";
 import "Types.proto";
 import "TrainerEnum.proto";
 import "BattleSkillEnum.proto";
+import "BattleRule.proto";
 
 option java_package = "er.proto";
 option java_multiple_files = true;
@@ -260,6 +261,8 @@ message TrainerParty {
 
   repeated TrainerMon mon = 1;
   repeated BattleSkillEnum skill = 2;
+  // Data-driven skills, see BattleRule.proto. Hell parties only.
+  repeated BattleRule rule = 3;
 }
 
 message Trainer {

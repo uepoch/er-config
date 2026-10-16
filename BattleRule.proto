@@ -1,0 +1,155 @@
+syntax = "proto3";
+
+package er;
+
+import "ScriptConditions.proto";
+import "SpeciesEnum.proto";
+import "MoveEnum.proto";
+import "Types.proto";
+
+option java_package = "er.proto";
+option java_multiple_files = true;
+
+// A hell-mode battle rule, written in a trainer's `hell {}` block:
+//   WHEN `trigger` fires for a mon (the "subject"), IF every `filter` passes, DO each `effect`.
+// Example (Josh): rule { trigger { entry { when: LEAD } } effect { stat_change { stat: RULE_STAT_DEF amount: 4 } } }
+message BattleRule {
+  RuleTrigger trigger = 1;
+  // All must pass. Use any_of / all_of / negate for anything fancier.
+  repeated RuleFilter filter = 2;
+  // Run in order, after one popup + announce for the whole rule. Max 3.
+  repeated RuleEffect effect = 3;
+  RuleLimit limit = 4;
+  // Popup text. Generated from the first effect when empty.
+  string name = 5;
+  // Text box line, shown the first time the rule fires in a battle. Generic text when empty.
+  string announce = 6;
+}
+
+// Whose mon the event is about. Rules belong to the trainer, so TRAINER is the default.
+enum RuleSide {
+  RULE_SIDE_TRAINER = 0;
+  RULE_SIDE_PLAYER = 1;
+  RULE_SIDE_ANY = 2;
+}
+
+message RuleEmpty {}
+
+message RuleTrigger {
+  RuleSide side = 1;
+  oneof kind {
+    // Subject = the mon coming in (battle-start leads included).
+    RuleEntry entry = 2;
+    // Subject = each active mon of `side`, at the end of the turn.
+    RuleTurnTick end_turn = 3;
+  }
+}
+
+message RuleEntry {
+  enum When {
+    // Every time a mon comes in, including a mon coming back.
+    EVERY = 0;
+    // Only the mons on the field when the battle starts.
+    LEAD = 1;
+    // Each mon once, the first time it comes in (lead or not).
+    FIRST = 2;
+  }
+  When when = 1;
+}
+
+message RuleTurnTick {
+  // Default (neither set): every turn.
+  oneof when {
+    // Fires on turns N, 2N, 3N...
+    int32 every = 1;
+    // Fires once, on turn N.
+    int32 after = 2;
+  }
+  // Count the turns this mon has been on the field instead of battle turns.
+  bool on_field = 3;
+}
+
+message RuleFilter {
+  bool negate = 1;
+  oneof kind {
+    RuleMon mon = 2;
+    // Weather is active and affects the subject (Utility Umbrella, Cloud Nine...).
+    Weather weather = 3;
+    Type mon_type = 4;
+    // Percent, 1-100. Put it last: filters are checked in order.
+    int32 chance = 5;
+    RuleFilterList any_of = 6;
+    RuleFilterList all_of = 7;
+  }
+}
+
+message RuleFilterList {
+  repeated RuleFilter filter = 1;
+}
+
+// Which of its party the subject is. Slots follow party order.
+message RuleMon {
+  oneof kind {
+    int32 first_n = 1;
+    int32 last_n = 2;
+    // The subject is the only mon of its party still able to fight.
+    RuleEmpty last_remaining = 3;
+    SpeciesEnum species = 4;
+  }
+}
+
+// Battlers, relative to the subject.
+enum RuleTarget {
+  RULE_TARGET_SUBJECT = 0;
+  RULE_TARGET_SUBJECT_ALLY = 1;
+  RULE_TARGET_SUBJECT_FOES = 2;
+}
+
+message RuleEffect {
+  // Who the effect applies to (for use_move: the move's target).
+  RuleTarget target = 1;
+  oneof kind {
+    RuleStatChange stat_change = 2;
+    RuleUseMove use_move = 3;
+    // Percent of max HP, 1-100.
+    int32 heal_percent = 4;
+  }
+}
+
+enum RuleStat {
+  RULE_STAT_ATK = 0;
+  RULE_STAT_DEF = 1;
+  RULE_STAT_SPEED = 2;
+  RULE_STAT_SPATK = 3;
+  RULE_STAT_SPDEF = 4;
+  RULE_STAT_ACC = 5;
+  RULE_STAT_EVASION = 6;
+  // Highest of Atk/Def/Speed/SpAtk/SpDef (raw stats, stages ignored).
+  RULE_STAT_HIGHEST = 7;
+  // Higher of Atk/SpAtk.
+  RULE_STAT_HIGHEST_OFFENSE = 8;
+  // Atk, Def, Speed, SpAtk and SpDef (omniboost).
+  RULE_STAT_ALL = 9;
+}
+
+message RuleStatChange {
+  repeated RuleStat stat = 1;
+  // -6 to 6, not 0. Negative lowers.
+  int32 amount = 2;
+}
+
+// Queues a real extra attack, like abilities that use moves.
+message RuleUseMove {
+  MoveEnum move = 1;
+  // Base power override, 0 = the move's own.
+  int32 power = 2;
+  // Who uses it. The first matching mon is picked, as is the first matching target.
+  RuleTarget user = 3;
+}
+
+enum RuleLimit {
+  RULE_LIMIT_NONE = 0;
+  RULE_LIMIT_ONCE_PER_BATTLE = 1;
+  RULE_LIMIT_ONCE_PER_MON = 2;
+  RULE_LIMIT_ONCE_PER_ENTRY = 3;
+}
