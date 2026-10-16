@@ -31285,6 +31285,11 @@ trainer {
       move: MOVE_WAVE_CRASH
       move: MOVE_ICE_FANG
     }
+    # Ai mons use Soak on entry
+    rule {
+      trigger { entry {} }
+      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_SOAK } }
+    }
   }
 }
 trainer {
@@ -41920,7 +41925,13 @@ trainer {
       move: MOVE_ICE_SHARD
       move: MOVE_ICE_HAMMER
     }
-    skill: SKILL_ON_ENTRY_SPDEF_UP_1
+    # +1 SpDef on entry
+    rule {
+      trigger { entry {} }
+      effect { stat_change { stat: RULE_STAT_SPDEF amount: 1 } }
+      name: "Spirit Guard"
+      announce: "{B_TRAINER1_NAME}'s Pokémon steels\\nits mind on entry!"
+    }
   }
 }
 trainer {
@@ -47117,8 +47128,19 @@ trainer {
       move: MOVE_HARD_PRESS
       move: MOVE_SCARY_FACE
     }
-    skill: SKILL_ON_ENTRY_DEF_UP_4
-    skill: SKILL_ON_END_TURN_DEF_UP_1
+    # +4 Def for the lead on entry, +1 Def every turn
+    rule {
+      trigger { entry { when: LEAD } }
+      effect { stat_change { stat: RULE_STAT_DEF amount: 4 } }
+      name: "Fortified Lead"
+      announce: "{B_TRAINER1_NAME}'s lead Pokémon\\nfortifies its defenses!"
+    }
+    rule {
+      trigger { end_turn {} }
+      effect { stat_change { stat: RULE_STAT_DEF amount: 1 } }
+      name: "Steady Defense"
+      announce: "{B_TRAINER1_NAME}'s Pokémon keeps\\nhardening its body!"
+    }
   }
 }
 trainer {
@@ -103013,6 +103035,12 @@ trainer {
       move: MOVE_EXCALIBUR
       move: MOVE_LAST_RESPECTS
       move: MOVE_SACRED_SWORD
+    }
+    # First and last mon get +2 Speed on entry (1 time only)
+    rule {
+      trigger { entry { when: FIRST } }
+      filter { any_of { filter { mon { first_n: 1 } } filter { mon { last_n: 1 } } } }
+      effect { stat_change { stat: RULE_STAT_SPEED amount: 2 } }
     }
   }
 }
