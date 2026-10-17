@@ -4208,7 +4208,7 @@ trainer {
     # Caltrops on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: CALTROPS side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: CALTROPS } }
       announce: "Caltrops scatter around {B_PLAYER_NAME}'s team!"
     }
   }
@@ -29135,7 +29135,7 @@ trainer {
     # Uses Tar Shot on entry
     rule {
       trigger { entry {} }
-      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_TAR_SHOT } }
+      effect { target: RULE_TARGET_FOES use_move { move: MOVE_TAR_SHOT } }
     }
   }
 }
@@ -31304,7 +31304,7 @@ trainer {
     # Ai mons use Soak on entry
     rule {
       trigger { entry {} }
-      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_SOAK } }
+      effect { target: RULE_TARGET_FOES use_move { move: MOVE_SOAK } }
     }
   }
 }
@@ -42423,7 +42423,7 @@ trainer {
     # Sticky Web on both sides of the field, put back whenever it is removed.
     rule {
       trigger { always {} }
-      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_BOTH } }
+      effect { target: RULE_TARGET_ALL hazard { kind: STICKY_WEB } }
       announce: "Sticky webs spread out on the\\nground around both sides of the field!"
     }
   }
@@ -45772,14 +45772,14 @@ trainer {
     # Two layers of Toxic Spikes on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 2 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: TOXIC_SPIKES layers: 2 } }
       name: "Toxic Spikes 2x"
       announce: "Two layers of Toxic Spikes scatter on the\\nground around {B_PLAYER_NAME} team!"
     }
     # One layer of Spikes on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: SPIKES layers: 1 } }
       name: "Spikes 1x"
       announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
     }
@@ -47373,7 +47373,7 @@ trainer {
     # Stealth Rock on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STEALTH_ROCK } }
       announce: "Pointed stones float in the air\\naround {B_PLAYER_NAME}'s team!"
     }
   }
@@ -49094,7 +49094,7 @@ trainer {
     # One layer of Spikes on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: SPIKES layers: 1 } }
       name: "Spikes 1x"
       announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
     }
@@ -49323,7 +49323,7 @@ trainer {
     # One layer of Spikes on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: SPIKES layers: 1 } }
       name: "Spikes 1x"
       announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
     }
@@ -79327,7 +79327,7 @@ trainer {
     # Permanent Sticky Web on the player's side, put back whenever it is removed.
     rule {
       trigger { always {} }
-      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STICKY_WEB } }
       announce: "A sticky web spreads out on the\\nground around {B_PLAYER_NAME}'s team!"
     }
   }
@@ -80901,7 +80901,7 @@ trainer {
     # Leech Seed on entry
     rule {
       trigger { entry {} }
-      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_LEECH_SEED } }
+      effect { target: RULE_TARGET_FOES use_move { move: MOVE_LEECH_SEED } }
     }
   }
 }
@@ -82452,7 +82452,7 @@ trainer {
     # Permanent Sticky Web on the player's side, put back whenever it is removed.
     rule {
       trigger { always {} }
-      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STICKY_WEB } }
       announce: "A sticky web spreads out on the\\nground around {B_PLAYER_NAME}'s team!"
     }
   }
@@ -83693,7 +83693,7 @@ trainer {
     # Two layers of Toxic Spikes on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 2 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: TOXIC_SPIKES layers: 2 } }
       name: "Toxic Spikes 2x"
       announce: "Two layers of Toxic Spikes scatter on the\\nground around {B_PLAYER_NAME} team!"
     }
@@ -93198,7 +93198,7 @@ trainer {
     # Stealth Rock on the player's side at battle start.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STEALTH_ROCK } }
       announce: "Pointed stones float in the air\\naround {B_PLAYER_NAME}'s team!"
     }
   }
@@ -101028,7 +101028,7 @@ trainer {
     # Permanent Rainbow on the trainer's side, put back whenever it ends.
     rule {
       trigger { always {} }
-      effect { field { side_condition { kind: RAINBOW side: RULE_FIELD_SIDE_TRAINER } turns: 0 } }
+      effect { field { side_condition { kind: RAINBOW } turns: 0 } }
       announce: "A rainbow appears in the sky over \\n{B_TRAINER1_NAME}'s team!"
     }
   }
@@ -103820,7 +103820,7 @@ trainer {
     # Permanent Rainbow on the trainer's side, put back whenever it ends.
     rule {
       trigger { always {} }
-      effect { field { side_condition { kind: RAINBOW side: RULE_FIELD_SIDE_TRAINER } turns: 0 } }
+      effect { field { side_condition { kind: RAINBOW } turns: 0 } }
       announce: "A rainbow appears in the sky over \\n{B_TRAINER1_NAME}'s team!"
     }
   }
@@ -109655,7 +109655,7 @@ trainer {
     # Permanent Swamp on the player's side, put back whenever it ends.
     rule {
       trigger { always {} }
-      effect { field { side_condition { kind: SWAMP side: RULE_FIELD_SIDE_PLAYER } turns: 0 } }
+      effect { target: RULE_TARGET_FOES field { side_condition { kind: SWAMP } turns: 0 } }
       announce: "A swamp envelops {B_PLAYER_NAME}'s team!"
     }
   }
@@ -111823,10 +111823,10 @@ trainer {
     # Every hazard on the player's side at battle start: Stealth Rock, Spikes, Toxic Spikes, Sticky Web.
     rule {
       trigger { battle_start {} }
-      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
-      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
-      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
-      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STEALTH_ROCK } }
+      effect { target: RULE_TARGET_FOES hazard { kind: SPIKES layers: 1 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: TOXIC_SPIKES layers: 1 } }
+      effect { target: RULE_TARGET_FOES hazard { kind: STICKY_WEB } }
       name: "All Hazards"
       announce: "All hazards were scattered around {B_PLAYER_NAME}'s team!"
     }

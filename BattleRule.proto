@@ -27,7 +27,7 @@ message BattleRule {
   string announce = 6;
 }
 
-// Whose mon the event is about. Rules belong to the trainer, so TRAINER is the default.
+// Which side's mons a trigger watches. Rules belong to the trainer, so TRAINER is the default.
 enum RuleSide {
   RULE_SIDE_TRAINER = 0;
   RULE_SIDE_PLAYER = 1;
@@ -37,17 +37,18 @@ enum RuleSide {
 message RuleEmpty {}
 
 message RuleTrigger {
-  // Whose mon the event is about (entry / end_turn only).
-  RuleSide whose = 1;
+  // Which side's mons the trigger watches (entry / end_turn only).
+  RuleSide side = 1;
   oneof kind {
     // Subject = the mon coming in (battle-start leads included).
     RuleEntry entry = 2;
-    // Subject = each active mon of `whose`, at the end of the turn.
+    // Subject = each active mon of `side`, at the end of the turn.
     RuleTurnTick end_turn = 3;
-    // Once, when the battle starts. No subject: hazard and field effects only.
+    // Once, when the battle starts. No subject, so targets are relative to the trainer: hazard and field effects only.
     RuleEmpty battle_start = 4;
     // Keeps its effects in place: applied at battle start, then silently put back at the end of any turn
-    // they're gone (Defog, Rapid Spin, a weather change...). No subject: hazard, field and ability effects only.
+    // they're gone (Defog, Rapid Spin, a weather change...). No subject, like battle_start: hazard, field and ability
+    // effects only.
     RuleEmpty always = 5;
   }
 }
@@ -105,15 +106,17 @@ message RuleMon {
   }
 }
 
-// Battlers, relative to the subject.
+// A side of the field, relative to the subject (the trainer for battle_start / always rules).
+// Each effect decides how much of that side it touches: the active mons (stat_change, heal_percent, use_move),
+// the side of the field (hazard, side_condition) or the whole team (ability).
 enum RuleTarget {
-  RULE_TARGET_SUBJECT = 0;
-  RULE_TARGET_SUBJECT_ALLY = 1;
-  RULE_TARGET_SUBJECT_FOES = 2;
+  RULE_TARGET_SUBJECT = 0;  // the subject's side; for mon effects, the subject itself
+  RULE_TARGET_FOES = 1;
+  RULE_TARGET_ALL = 2;
 }
 
 message RuleEffect {
-  // Who the effect applies to (for use_move: the move's target).
+  // Where the effect goes (for use_move: the move's target). Ignored by weather, terrain and rooms.
   RuleTarget target = 1;
   oneof kind {
     RuleStatChange stat_change = 2;
@@ -122,18 +125,10 @@ message RuleEffect {
     int32 heal_percent = 4;
     RuleHazard hazard = 5;
     RuleField field = 6;
-    // `always` rules only. Every Pokemon of the trainer has this ability on top of its own, for the whole
-    // battle (3 per trainer, old battle events included).
+    // `always` rules only, target SUBJECT. Every Pokemon of the trainer has this ability on top of its own,
+    // for the whole battle (3 per trainer, old battle events included).
     AbilityEnum ability = 7;
   }
-}
-
-// Where a hazard or side condition goes. Required.
-enum RuleFieldSide {
-  RULE_FIELD_SIDE_UNSET = 0;
-  RULE_FIELD_SIDE_PLAYER = 1;
-  RULE_FIELD_SIDE_TRAINER = 2;
-  RULE_FIELD_SIDE_BOTH = 3;
 }
 
 // Hazard and field effects only do something when it's missing, so they never stack or spam.
@@ -149,9 +144,8 @@ message RuleHazard {
     HOT_COALS = 6;
   }
   Kind kind = 1;
-  RuleFieldSide side = 2;
   // Spikes / Toxic Spikes: at least this many layers (up to 3 / 2). Default 1.
-  int32 layers = 3;
+  int32 layers = 2;
 }
 
 message RuleField {
@@ -212,7 +206,6 @@ message RuleSideCondition {
     SMOKESCREEN = 10;
   }
   Kind kind = 1;
-  RuleFieldSide side = 2;
 }
 
 enum RuleStat {
@@ -247,7 +240,7 @@ message RuleUseMove {
   MoveEnum move = 1;
   // Base power override, 0 = the move's own.
   int32 power = 2;
-  // Who uses it, picked at random if several match.
+  // Who uses it, picked at random if several match (SUBJECT = the subject itself).
   RuleTarget user = 3;
   // The effect's `target` picks a random matching Pokemon. Spread and self-targeting moves (Cosmic Power...)
   // are handled like abilities' follow-up moves.
