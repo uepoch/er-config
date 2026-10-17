@@ -91,35 +91,9 @@ skill {
   announce_string: "{B_TRAINER1_NAME}'s team is protected by\\nEviolite."
 }
 skill {
-  id: SKILL_PERMANENT_STICKY_WEB
-  name: "Sticky Web"
-  announce_string: "A sticky web spreads out on the\\nground around {B_PLAYER_NAME}'s team!"
-}
-skill {
-  id: SKILL_STICKY_WEB_BOTH_SIDES
-  name: "Sticky Web"
-  announce_string: "Sticky webs spread out on the\\nground around both sides of the field!"
-}
-skill {
-  id: SKILL_SPIKES_1_LAYER
-  name: "Spikes 1x"
-  announce_string: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
-}
-skill {
   id: SKILL_ON_ENTRY_LEECH_SEED
   name: "Leech Seed"
   announce_string: "A seed was planted on {B_DEF_NAME_WITH_PREFIX}!"
-}
-skill {
-  id: SKILL_TOXIC_SPIKES_2_LAYERS
-  name: "Toxic Spikes 2x"
-  announce_string: "Two layers of Toxic Spikes scatter on the\\nground around {B_PLAYER_NAME} team!"
-}
-skill {
-  id: SKILL_HAZARDS_ALL
-  name: "All Hazards"
-  # TODO: Come up with better announce string for this skill
-  announce_string: "All hazards were scattered around {B_PLAYER_NAME}'s team!"
 }
 skill {
   id: SKILL_ON_END_TURN_MOVE_JUDGEMENT_60_BP
@@ -135,41 +109,4 @@ skill {
   id: SKILL_NO_CRIT
   name: "Critical Hit Immunity"
   announce_string: "{B_TRAINER1_NAME}'s team is immune to critical hits!"
-}
-skill {
-  id: SKILL_STEALTH_ROCKS
-  name: "Stealth Rock"
-  announce_string: "Pointed stones float in the air\\naround {B_PLAYER_NAME}'s team!"
-}
-skill {
-  id: SKILL_CALTROPS
-  name: "Caltrops"
-  announce_string: "Caltrops scatter around {B_PLAYER_NAME}'s team!"
-}
-skill {
-  id: SKILL_PERMANENT_INVERSE_ROOM
-  name: "Inverse Room"
-  # TODO: Come up with a better announce string
-  announce_string: "An unknown power inverts type effectiveness!"
-}
-skill {
-  id: SKILL_PERMANENT_TRICK_ROOM
-  name: "Trick Room"
-  # TODO: Come up with a better announce string
-  announce_string: "The dimensions are twisted!"
-}
-skill {
-  id: SKILL_PERMANENT_RAINBOW
-  name: "Rainbow"
-  announce_string: "A rainbow appears in the sky over \\n{B_TRAINER1_NAME}'s team!"
-}
-skill {
-  id: SKILL_PERMANENT_SWAMP
-  name: "Swamp"
-  announce_string: "A swamp envelops {B_PLAYER_NAME}'s team!"
-}
-skill {
-  id: SKILL_PERMANENT_FIRE_SEA
-  name: "Sea of Fire"
-  announce_string: "A sea of fire surrounds {B_PLAYER_NAME}'s team!"
 }
