@@ -17,7 +17,7 @@ message BattleRule {
   RuleTrigger trigger = 1;
   // All must pass. Use any_of / all_of / negate for anything fancier.
   repeated RuleFilter filter = 2;
-  // Run in order, after one popup + announce for the whole rule. Max 3.
+  // Run in order, after one popup + announce for the whole rule. Max 8.
   repeated RuleEffect effect = 3;
   RuleLimit limit = 4;
   // Popup text. Generated from the first effect when empty.
@@ -36,12 +36,18 @@ enum RuleSide {
 message RuleEmpty {}
 
 message RuleTrigger {
-  RuleSide side = 1;
+  // Whose mon the event is about (entry / end_turn only).
+  RuleSide whose = 1;
   oneof kind {
     // Subject = the mon coming in (battle-start leads included).
     RuleEntry entry = 2;
-    // Subject = each active mon of `side`, at the end of the turn.
+    // Subject = each active mon of `whose`, at the end of the turn.
     RuleTurnTick end_turn = 3;
+    // Once, when the battle starts. No subject: hazard and field effects only.
+    RuleEmpty battle_start = 4;
+    // Keeps its effects in place: applied at battle start, then silently put back at the end of any turn
+    // they're gone (Defog, Rapid Spin, a weather change...). No subject: hazard and field effects only.
+    RuleEmpty always = 5;
   }
 }
 
@@ -113,7 +119,96 @@ message RuleEffect {
     RuleUseMove use_move = 3;
     // Percent of max HP, 1-100.
     int32 heal_percent = 4;
+    RuleHazard hazard = 5;
+    RuleField field = 6;
   }
+}
+
+// Where a hazard or side condition goes. Required.
+enum RuleFieldSide {
+  RULE_FIELD_SIDE_UNSET = 0;
+  RULE_FIELD_SIDE_PLAYER = 1;
+  RULE_FIELD_SIDE_TRAINER = 2;
+  RULE_FIELD_SIDE_BOTH = 3;
+}
+
+// Hazard and field effects only do something when it's missing, so they never stack or spam.
+message RuleHazard {
+  enum Kind {
+    SPIKES = 0;
+    TOXIC_SPIKES = 1;
+    STEALTH_ROCK = 2;
+    STICKY_WEB = 3;
+    // Sticky Web that Defog, Rapid Spin and Court Change don't remove (like the Foamy Web ability)
+    FOAMY_WEB = 4;
+    CALTROPS = 5;
+    HOT_COALS = 6;
+  }
+  Kind kind = 1;
+  RuleFieldSide side = 2;
+  // Spikes / Toxic Spikes: at least this many layers (up to 3 / 2). Default 1.
+  int32 layers = 3;
+}
+
+message RuleField {
+  oneof kind {
+    // Replaces the current weather.
+    RuleWeather weather = 1;
+    // Replaces the current terrain.
+    RuleTerrain terrain = 2;
+    // Whole field.
+    RuleRoom room = 3;
+    RuleSideCondition side_condition = 4;
+  }
+  // 0 = permanent. Permanent weather also stops anything else from changing it.
+  int32 turns = 5;
+}
+
+enum RuleWeather {
+  RULE_WEATHER_RAIN = 0;
+  RULE_WEATHER_SUN = 1;
+  RULE_WEATHER_SANDSTORM = 2;
+  RULE_WEATHER_HAIL = 3;
+  RULE_WEATHER_FOG = 4;
+  RULE_WEATHER_HEAVY_RAIN = 5;
+  RULE_WEATHER_HARSH_SUN = 6;
+  RULE_WEATHER_STRONG_WINDS = 7;
+}
+
+enum RuleTerrain {
+  RULE_TERRAIN_ELECTRIC = 0;
+  RULE_TERRAIN_GRASSY = 1;
+  RULE_TERRAIN_MISTY = 2;
+  RULE_TERRAIN_PSYCHIC = 3;
+  RULE_TERRAIN_TOXIC = 4;
+}
+
+enum RuleRoom {
+  RULE_ROOM_TRICK_ROOM = 0;
+  RULE_ROOM_MAGIC_ROOM = 1;
+  RULE_ROOM_WONDER_ROOM = 2;
+  RULE_ROOM_INVERSE_ROOM = 3;
+  RULE_ROOM_GRAVITY = 4;
+  RULE_ROOM_MUD_SPORT = 5;
+  RULE_ROOM_WATER_SPORT = 6;
+}
+
+message RuleSideCondition {
+  enum Kind {
+    REFLECT = 0;
+    LIGHT_SCREEN = 1;
+    AURORA_VEIL = 2;
+    TAILWIND = 3;
+    MIST = 4;
+    SAFEGUARD = 5;
+    LUCKY_CHANT = 6;
+    SWAMP = 7;
+    SEA_OF_FIRE = 8;
+    RAINBOW = 9;
+    SMOKESCREEN = 10;
+  }
+  Kind kind = 1;
+  RuleFieldSide side = 2;
 }
 
 enum RuleStat {
