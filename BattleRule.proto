@@ -2,6 +2,7 @@ syntax = "proto3";
 
 package er;
 
+import "AbilityEnum.proto";
 import "ScriptConditions.proto";
 import "SpeciesEnum.proto";
 import "MoveEnum.proto";
@@ -46,7 +47,7 @@ message RuleTrigger {
     // Once, when the battle starts. No subject: hazard and field effects only.
     RuleEmpty battle_start = 4;
     // Keeps its effects in place: applied at battle start, then silently put back at the end of any turn
-    // they're gone (Defog, Rapid Spin, a weather change...). No subject: hazard and field effects only.
+    // they're gone (Defog, Rapid Spin, a weather change...). No subject: hazard, field and ability effects only.
     RuleEmpty always = 5;
   }
 }
@@ -121,6 +122,9 @@ message RuleEffect {
     int32 heal_percent = 4;
     RuleHazard hazard = 5;
     RuleField field = 6;
+    // `always` rules only. Every Pokemon of the trainer has this ability on top of its own, for the whole
+    // battle (3 per trainer, old battle events included).
+    AbilityEnum ability = 7;
   }
 }
 
