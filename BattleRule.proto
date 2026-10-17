@@ -136,15 +136,24 @@ message RuleStatChange {
   repeated RuleStat stat = 1;
   // -6 to 6, not 0. Negative lowers.
   int32 amount = 2;
+  // A change on the player's Pokemon counts as caused by the trainer's Pokemon, like a move or ability:
+  // Clear Body, Mist, Mirror Armor etc. can stop it (Protect can't). Set this to skip all of that.
+  // Changes on the trainer's own Pokemon are always self-applied. Contrary and Simple apply either way.
+  bool unblockable = 3;
 }
 
-// Queues a real extra attack, like abilities that use moves.
+// Queues a real extra attack, like abilities that use moves, so Protect, redirection, immunities etc.
+// all apply as for any move.
+// Shares the extra-attack queue with abilities, which holds 4 waiting attacks on purpose (balance): when it's
+// full the move is skipped.
 message RuleUseMove {
   MoveEnum move = 1;
   // Base power override, 0 = the move's own.
   int32 power = 2;
-  // Who uses it. The first matching mon is picked, as is the first matching target.
+  // Who uses it, picked at random if several match.
   RuleTarget user = 3;
+  // The effect's `target` picks a random matching Pokemon for single-target moves. Spread moves start where
+  // the game normally starts them and hit every target; self-targeting moves (Cosmic Power...) hit the user.
 }
 
 enum RuleLimit {
