@@ -2670,6 +2670,10 @@ trainer {
       move: MOVE_GIGA_IMPACT
       move: MOVE_PROTECT
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_FILTER }
+    }
   }
 }
 trainer {
@@ -3404,6 +3408,10 @@ trainer {
       move: MOVE_FURY_CUTTER
       move: MOVE_NIGHT_SLASH
       move: MOVE_RAPID_RIVER
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SMOKEY_MANEUVERS }
     }
   }
 }
@@ -9160,6 +9168,11 @@ trainer {
       filter { mon { last_remaining {} } }
       effect { stat_change { stat: RULE_STAT_ALL amount: 1 } }
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_ACCELERATE }
+      effect { ability: ABILITY_ANALYTIC }
+    }
   }
 }
 trainer {
@@ -10873,6 +10886,10 @@ trainer {
       move: MOVE_SHADOW_CLAW
       move: MOVE_PLAY_ROUGH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_COMATOSE }
+    }
   }
 }
 trainer {
@@ -11243,6 +11260,10 @@ trainer {
       move: MOVE_TOXIC_NEEDLES
       move: MOVE_POISON_STING
       move: MOVE_PIN_MISSILE
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TECHNICIAN }
     }
   }
 }
@@ -12002,6 +12023,12 @@ trainer {
       move: MOVE_ROCK_BLAST
       move: MOVE_FURY_ATTACK
       move: MOVE_SPIKY_SHIELD
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_COSMIC_DAZE }
     }
   }
 }
@@ -19047,6 +19074,10 @@ trainer {
       move: MOVE_ZEPHYR_RUSH
       move: MOVE_ROOST
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_CUTE_CHARM }
+    }
   }
 }
 trainer {
@@ -22296,6 +22327,10 @@ trainer {
       move: MOVE_SLEEP_POWDER
       move: MOVE_HURRICANE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_CHEAP_TACTICS }
+    }
   }
 }
 trainer {
@@ -23366,6 +23401,13 @@ trainer {
       move: MOVE_DRAINING_KISS
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PURE_LOVE }
+      effect { ability: ABILITY_PIXIE_POWER }
+    }
+  }
 }
 trainer {
   id: TRAINER_THALIA_2
@@ -24353,6 +24395,10 @@ trainer {
       move: MOVE_POWER_UP_PUNCH
       move: MOVE_FAKE_OUT
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_KNOW_YOUR_PLACE }
+    }
   }
 }
 trainer {
@@ -24495,6 +24541,11 @@ trainer {
       move: MOVE_HYPER_BEAM
       move: MOVE_MYSTIC_DANCE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_WEATHER_DOUBLE_BOOST }
+      effect { ability: ABILITY_SUN_WORSHIP }
+    }
   }
 }
 trainer {
@@ -24635,6 +24686,10 @@ trainer {
       move: MOVE_CHILLING_WATER
       move: MOVE_WHIRLPOOL
       move: MOVE_MIRROR_COAT
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STICKY_HOLD }
     }
   }
 }
@@ -24995,6 +25050,12 @@ trainer {
       move: MOVE_ICE_BEAM
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_COMATOSE }
+    }
+  }
 }
 trainer {
   id: TRAINER_DAVID
@@ -25151,6 +25212,10 @@ trainer {
       move: MOVE_CROSS_POISON
       move: MOVE_NIGHT_SLASH
       move: MOVE_X_SCISSOR
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_REGENERATOR }
     }
   }
 }
@@ -27737,6 +27802,10 @@ trainer {
       move: MOVE_VOLT_SWITCH
       move: MOVE_MACH_PUNCH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TRANSISTOR }
+    }
   }
 }
 trainer {
@@ -28196,6 +28265,10 @@ trainer {
       move: MOVE_HIDDEN_POWER
       move: MOVE_PARABOLIC_CHARGE
       hidden_power_type: TYPE_ICE
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_FRIEND_GUARD }
     }
   }
 }
@@ -33154,6 +33227,10 @@ trainer {
       move: MOVE_X_SCISSOR
       move: MOVE_SUCKER_PUNCH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TINTED_LENS }
+    }
   }
 }
 trainer {
@@ -34398,6 +34475,10 @@ trainer {
       move: MOVE_THUNDER
       move: MOVE_QUIVER_DANCE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_GIFTED_MIND }
+    }
   }
 }
 trainer {
@@ -34917,6 +34998,10 @@ trainer {
       move: MOVE_PSYSHIELD_BASH
       move: MOVE_U_TURN
       move: MOVE_HIGH_JUMP_KICK
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MYSTIC_POWER }
     }
   }
 }
@@ -38100,6 +38185,12 @@ trainer {
       move: MOVE_EARTHQUAKE
       move: MOVE_DRAGON_DANCE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PRESSURE }
+      effect { ability: ABILITY_SHED_SKIN }
+      effect { ability: ABILITY_SELF_SUFFICIENT }
+    }
   }
 }
 trainer {
@@ -38606,6 +38697,10 @@ trainer {
       move: MOVE_ICE_PUNCH
       move: MOVE_SEISMIC_FIST
       move: MOVE_THUNDER_PUNCH
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_OLE }
     }
   }
 }
@@ -39130,6 +39225,10 @@ trainer {
       move: MOVE_SUPERSONIC_SHOT
       move: MOVE_WEB_SHOT
       move: MOVE_SPARKLING_BARRAGE
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SURGE_SURFER }
     }
   }
 }
@@ -43131,6 +43230,10 @@ trainer {
       move: MOVE_JAW_LOCK
       move: MOVE_ICE_FANG
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_FRIEND_GUARD }
+    }
   }
 }
 trainer {
@@ -43642,6 +43745,11 @@ trainer {
       move: MOVE_MYSTIC_DANCE
       move: MOVE_AURA_SPHERE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SELF_SUFFICIENT }
+      effect { ability: ABILITY_INNER_FOCUS }
+    }
   }
 }
 trainer {
@@ -43864,6 +43972,10 @@ trainer {
       move: MOVE_PIXIE_BEAM
       move: MOVE_EXTRASENSORY
       move: MOVE_SHADOW_BALL
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PRETTY_PRINCESS }
     }
   }
 }
@@ -44392,6 +44504,12 @@ trainer {
       move: MOVE_DRAIN_PUNCH
       move: MOVE_LAST_RESPECTS
       move: MOVE_WILL_O_WISP
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_GRASS_PELT }
+      effect { ability: ABILITY_FLOURISH }
+      effect { ability: ABILITY_SELF_SUFFICIENT }
     }
   }
 }
@@ -44962,6 +45080,10 @@ trainer {
       move: MOVE_INFERNAL_PARADE
       move: MOVE_ENERGY_BALL
       move: MOVE_FOCUS_BLAST
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_FRIEND_GUARD }
     }
   }
 }
@@ -46496,6 +46618,10 @@ trainer {
       move: MOVE_ROCK_SLIDE
       move: MOVE_ASTONISH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_UNNERVE }
+    }
   }
 }
 trainer {
@@ -47751,6 +47877,10 @@ trainer {
       move: MOVE_FLAMETHROWER
       move: MOVE_GIGA_DRAIN
       move: MOVE_SHADOW_BALL
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SURGE_SURFER }
     }
   }
 }
@@ -50201,6 +50331,10 @@ trainer {
       move: MOVE_BOUNCE
       move: MOVE_AQUA_JET
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SUPER_LUCK }
+    }
   }
 }
 trainer {
@@ -52248,6 +52382,10 @@ trainer {
       move: MOVE_STONE_EDGE
       move: MOVE_KOWTOW_CLEAVE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_GUARD_DOG }
+    }
   }
 }
 trainer {
@@ -53794,6 +53932,10 @@ trainer {
       move: MOVE_ZEN_HEADBUTT
       move: MOVE_ICE_PUNCH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MOMENTUM }
+    }
   }
 }
 trainer {
@@ -54197,6 +54339,10 @@ trainer {
       move: MOVE_SKY_UPPERCUT
       move: MOVE_DIZZY_PUNCH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_IMPULSE }
+    }
   }
 }
 trainer {
@@ -54474,6 +54620,12 @@ trainer {
       move: MOVE_CRUNCH
       move: MOVE_SPARK
       move: MOVE_LOVELY_BITE
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_ANGELS_WRATH }
     }
   }
 }
@@ -58659,6 +58811,14 @@ trainer {
       move: MOVE_U_TURN
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_RESTRAINING_ORDER }
+      effect { ability: ABILITY_LEVITATE }
+      effect { ability: ABILITY_INFLATABLE }
+    }
+  }
 }
 trainer {
   id: TRAINER_LAO_1
@@ -59667,6 +59827,10 @@ trainer {
       move: MOVE_BULLET_PUNCH
       move: MOVE_CROSS_CHOP
       move: MOVE_ACROBATICS
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SCRAPPY }
     }
   }
 }
@@ -61696,6 +61860,11 @@ trainer {
       move: MOVE_AIR_SLASH
       move: MOVE_QUIVER_DANCE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_COMATOSE }
+      effect { ability: ABILITY_SWEET_DREAMS }
+    }
   }
 }
 trainer {
@@ -61898,6 +62067,12 @@ trainer {
       move: MOVE_SURF
       move: MOVE_FREEZE_DRY
       move: MOVE_SHADOW_BALL
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SELF_SUFFICIENT }
     }
   }
 }
@@ -65968,6 +66143,10 @@ trainer {
       move: MOVE_SECRET_POWER
       hidden_power_type: TYPE_FIRE
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_FLASH_FIRE }
+    }
   }
 }
 trainer {
@@ -66926,6 +67105,10 @@ trainer {
       move: MOVE_DRAIN_PUNCH
       move: MOVE_MACH_PUNCH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MERCILESS }
+    }
   }
 }
 trainer {
@@ -67061,6 +67244,12 @@ trainer {
       move: MOVE_DUAL_CHOP
       move: MOVE_KNOCK_OFF
       move: MOVE_MACH_PUNCH
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_POISON_HEAL }
     }
   }
 }
@@ -72115,6 +72304,10 @@ trainer {
       move: MOVE_AIR_SLASH
       move: MOVE_HYPER_BEAM
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_HUBRIS }
+    }
   }
 }
 trainer {
@@ -73003,6 +73196,10 @@ trainer {
       move: MOVE_PSYCHO_CUT
       move: MOVE_FLUTTERING_LEAF
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MOXIE }
+    }
   }
 }
 trainer {
@@ -73603,6 +73800,13 @@ trainer {
       move: MOVE_SHADOW_BALL
       move: MOVE_BODY_PRESS
       move: MOVE_FLASH_CANNON
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_BONE_ZONE }
+      effect { ability: ABILITY_HAUNTING_FRENZY }
     }
   }
 }
@@ -79056,6 +79260,12 @@ trainer {
       move: MOVE_DRAGON_CLAW
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
+    }
+  }
 }
 trainer {
   id: TRAINER_BRENDAN_RUSTBORO_MUDKIP
@@ -79192,6 +79402,12 @@ trainer {
       move: MOVE_ICE_SHARD
       move: MOVE_AERIAL_ACE
       move: MOVE_DRAGON_CLAW
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
     }
   }
 }
@@ -80083,6 +80299,12 @@ trainer {
       move: MOVE_DRAGON_CLAW
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
+    }
+  }
 }
 trainer {
   id: TRAINER_MAY_RUSTBORO_MUDKIP
@@ -80219,6 +80441,12 @@ trainer {
       move: MOVE_DRACO_METEOR
       move: MOVE_ICE_BEAM
       move: MOVE_THUNDERBOLT
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
     }
   }
 }
@@ -81075,6 +81303,10 @@ trainer {
       move: MOVE_THUNDERBOLT
       move: MOVE_FLAMETHROWER
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SHELL_ARMOR }
+    }
   }
 }
 trainer {
@@ -81488,6 +81720,10 @@ trainer {
       move: MOVE_VENOSHOCK
       move: MOVE_FLAMETHROWER
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
+    }
   }
 }
 trainer {
@@ -81657,6 +81893,11 @@ trainer {
       move: MOVE_SHIFT_GEAR
       move: MOVE_ICE_SPINNER
       move: MOVE_COMBAT_TORQUE
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_BIOFILM }
+      effect { ability: ABILITY_POISON_ABSORB }
     }
   }
 }
@@ -82647,6 +82888,10 @@ trainer {
       move: MOVE_ACCELEROCK
       move: MOVE_PIXIE_SLASH
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SWORD_OF_RUIN }
+    }
   }
 }
 trainer {
@@ -82861,6 +83106,10 @@ trainer {
       move: MOVE_HURRICANE
       move: MOVE_BUG_BUZZ
       move: MOVE_QUIVER_DANCE
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SHIELD_DUST }
     }
   }
 }
@@ -86625,6 +86874,14 @@ trainer {
       move: MOVE_QUIVER_DANCE
     }
   }
+  hell {
+    # Permanent Sea of Fire on the player's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { target: RULE_TARGET_FOES field { side_condition { kind: SEA_OF_FIRE } turns: 0 } }
+      announce: "A sea of fire envelops {B_PLAYER_NAME}'s team!"
+    }
+  }
 }
 trainer {
   id: TRAINER_KIRA_AND_DAN_2
@@ -86902,6 +87159,10 @@ trainer {
       move: MOVE_SHELL_SMASH
       move: MOVE_HIDDEN_POWER
       hidden_power_type: TYPE_ELECTRIC
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_CUTE_CHARM }
     }
   }
 }
@@ -91326,6 +91587,11 @@ trainer {
       move: MOVE_BODY_PRESS
       move: MOVE_DRACO_METEOR
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_VOLT_ABSORB }
+      effect { ability: ABILITY_WATER_ABSORB }
+    }
   }
 }
 trainer {
@@ -92860,6 +93126,10 @@ trainer {
       move: MOVE_SLEEP_TALK
       move: MOVE_FLAIL
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_INNARDS_OUT }
+    }
   }
 }
 trainer {
@@ -93575,6 +93845,10 @@ trainer {
       move: MOVE_BUG_BUZZ
       move: MOVE_DRACO_METEOR
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MOLD_BREAKER }
+    }
   }
 }
 trainer {
@@ -93770,6 +94044,10 @@ trainer {
       move: MOVE_DUAL_WINGBEAT
       move: MOVE_THUNDER_PUNCH
       move: MOVE_FAKE_OUT
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_SPEED_BOOST }
     }
   }
 }
@@ -94177,6 +94455,10 @@ trainer {
       move: MOVE_FIRE_FANG
       move: MOVE_SLUDGE_BOMB
       move: MOVE_NASTY_PLOT
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_LONG_REACH }
     }
   }
 }
@@ -96691,6 +96973,10 @@ trainer {
       move: MOVE_UPPER_HAND
       move: MOVE_FIRE_PUNCH
       move: MOVE_METEOR_MASH
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_GALLANTRY }
     }
   }
 }
@@ -100569,6 +100855,14 @@ trainer {
       move: MOVE_FAKE_OUT
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PRIMORDIAL_SEA }
+      effect { ability: ABILITY_SWIFT_SWIM }
+      effect { ability: ABILITY_SAP_SIPPER }
+    }
+  }
 }
 trainer {
   id: TRAINER_ISABELLE
@@ -100667,6 +100961,18 @@ trainer {
       move: MOVE_EARTH_POWER
       move: MOVE_SHOCK_WAVE
       move: MOVE_FUTURE_SIGHT
+    }
+  }
+  hell {
+    # Permanent Swamp on the player's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { target: RULE_TARGET_FOES field { side_condition { kind: SWAMP } turns: 0 } }
+      announce: "A swamp envelops {B_PLAYER_NAME}'s team!"
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PRIMORDIAL_SEA }
     }
   }
 }
@@ -101184,6 +101490,14 @@ trainer {
       move: MOVE_WAVE_CRASH
     }
   }
+  hell {
+    # Permanent Swamp on the player's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { target: RULE_TARGET_FOES field { side_condition { kind: SWAMP } turns: 0 } }
+      announce: "A swamp envelops {B_PLAYER_NAME}'s team!"
+    }
+  }
 }
 trainer {
   id: TRAINER_CORY_2
@@ -101607,6 +101921,10 @@ trainer {
       move: MOVE_SCALD
       move: MOVE_AQUA_STEP
       move: MOVE_BLIZZARD
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_MOUNTAINEER }
     }
   }
 }
@@ -104227,6 +104545,10 @@ trainer {
       move: MOVE_AURA_SPHERE
       move: MOVE_CALM_MIND
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PSYCHIC_SURGE }
+    }
   }
 }
 trainer {
@@ -104436,6 +104758,10 @@ trainer {
       move: MOVE_SEARING_SHOT
       move: MOVE_ZAP_CANNON
       hidden_power_type: TYPE_FLYING
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_HYPER_AGGRESSIVE }
     }
   }
 }
@@ -106826,6 +107152,12 @@ trainer {
       move: MOVE_THUNDERBOLT
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
+    }
+  }
 }
 trainer {
   id: TRAINER_MAY_RUSTBORO_TORCHIC
@@ -106962,6 +107294,12 @@ trainer {
       move: MOVE_DRACO_METEOR
       move: MOVE_ICE_BEAM
       move: MOVE_THUNDERBOLT
+    }
+  }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_STURDY }
     }
   }
 }
@@ -107781,6 +108119,10 @@ trainer {
       move: MOVE_NIGHT_SLASH
       move: MOVE_CUT
       move: MOVE_AIR_CUTTER
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_POWER_SPOT }
     }
   }
 }
@@ -109137,6 +109479,10 @@ trainer {
       move: MOVE_WEATHER_BALL
       move: MOVE_SONIC_BOOM
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_PRIMORDIAL_SEA }
+    }
   }
 }
 trainer {
@@ -109308,6 +109654,11 @@ trainer {
       move: MOVE_DRAINING_KISS
       move: MOVE_CALM_MIND
       move: MOVE_LEECH_SEED
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TRIAGE }
+      effect { ability: ABILITY_DAZZLING }
     }
   }
 }
@@ -110319,6 +110670,12 @@ trainer {
       move: MOVE_SHADOW_SNEAK
     }
   }
+  hell {
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TERA_SHELL }
+    }
+  }
 }
 trainer {
   id: TRAINER_CROBATITE_DEWFORD_MANOR
@@ -110565,6 +110922,10 @@ trainer {
       move: MOVE_BOOMBURST
       move: MOVE_CROSS_POISON
       move: MOVE_TAKE_FLIGHT
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_TRICKSTER }
     }
   }
 }
@@ -110950,6 +111311,10 @@ trainer {
       move: MOVE_DRAGON_DANCE
       move: MOVE_SECRET_POWER
       hidden_power_type: TYPE_DARK
+    }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_EMPERORS_WRATH }
     }
   }
 }
