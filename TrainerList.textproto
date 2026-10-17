@@ -4205,7 +4205,12 @@ trainer {
       move: MOVE_BOOMBURST
       move: MOVE_SLUDGE_BOMB
     }
-    skill: SKILL_CALTROPS
+    # Caltrops on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: CALTROPS side: RULE_FIELD_SIDE_PLAYER } }
+      announce: "Caltrops scatter around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -33359,7 +33364,12 @@ trainer {
       move: MOVE_HEAD_SMASH
       move: MOVE_WILD_CHARGE
     }
-    skill: SKILL_PERMANENT_TRICK_ROOM
+    # Trick Room, permanent: put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { field { room: RULE_ROOM_TRICK_ROOM turns: 0 } }
+      announce: "The dimensions are twisted!"
+    }
   }
 }
 trainer {
@@ -42410,7 +42420,12 @@ trainer {
       move: MOVE_DARK_PULSE
       move: MOVE_MAGICAL_LEAF
     }
-    skill: SKILL_PERMANENT_STICKY_WEB
+    # Sticky Web on both sides of the field, put back whenever it is removed.
+    rule {
+      trigger { always {} }
+      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_BOTH } }
+      announce: "Sticky webs spread out on the\\nground around both sides of the field!"
+    }
   }
 }
 trainer {
@@ -45754,8 +45769,20 @@ trainer {
       move: MOVE_HAMMER_ARM
       move: MOVE_CRUNCH
     }
-    skill: SKILL_TOXIC_SPIKES_2_LAYERS
-    skill: SKILL_SPIKES_1_LAYER
+    # Two layers of Toxic Spikes on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 2 } }
+      name: "Toxic Spikes 2x"
+      announce: "Two layers of Toxic Spikes scatter on the\\nground around {B_PLAYER_NAME} team!"
+    }
+    # One layer of Spikes on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      name: "Spikes 1x"
+      announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -47339,7 +47366,12 @@ trainer {
       move: MOVE_RECOVER
       move: MOVE_HARD_PRESS
     }
-    skill: SKILL_STEALTH_ROCKS
+    # Stealth Rock on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
+      announce: "Pointed stones float in the air\\naround {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -49055,7 +49087,13 @@ trainer {
       move: MOVE_GEAR_UP
       move: MOVE_DARK_PULSE
     }
-    skill: SKILL_SPIKES_1_LAYER
+    # One layer of Spikes on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      name: "Spikes 1x"
+      announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -49278,7 +49316,13 @@ trainer {
       move: MOVE_EARTH_POWER
       move: MOVE_PEBBLE_SHOWER
     }
-    skill: SKILL_SPIKES_1_LAYER
+    # One layer of Spikes on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      name: "Spikes 1x"
+      announce: "A layer of spikes scatters on the\\nground around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -79276,7 +79320,12 @@ trainer {
       move: MOVE_SHARPEN
       move: MOVE_RIP_AND_TEAR
     }
-    skill: SKILL_PERMANENT_STICKY_WEB
+    # Permanent Sticky Web on the player's side, put back whenever it is removed.
+    rule {
+      trigger { always {} }
+      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      announce: "A sticky web spreads out on the\\nground around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -82396,7 +82445,12 @@ trainer {
       move: MOVE_HIDDEN_POWER
       hidden_power_type: TYPE_ICE
     }
-    skill: SKILL_PERMANENT_STICKY_WEB
+    # Permanent Sticky Web on the player's side, put back whenever it is removed.
+    rule {
+      trigger { always {} }
+      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      announce: "A sticky web spreads out on the\\nground around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -83632,7 +83686,13 @@ trainer {
       move: MOVE_DEFEND_ORDER
       move: MOVE_ENCORE
     }
-    skill: SKILL_TOXIC_SPIKES_2_LAYERS
+    # Two layers of Toxic Spikes on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 2 } }
+      name: "Toxic Spikes 2x"
+      announce: "Two layers of Toxic Spikes scatter on the\\nground around {B_PLAYER_NAME} team!"
+    }
   }
 }
 trainer {
@@ -92568,7 +92628,12 @@ trainer {
       move: MOVE_THUNDERBOLT
       move: MOVE_FREEZING_GLARE
     }
-    skill: SKILL_PERMANENT_INVERSE_ROOM
+    # Permanent Inverse Room, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { field { room: RULE_ROOM_INVERSE_ROOM turns: 0 } }
+      announce: "An unknown power inverts type effectiveness!"
+    }
   }
 }
 trainer {
@@ -93126,7 +93191,12 @@ trainer {
       move: MOVE_ENERGY_WAVE
       move: MOVE_FAKE_OUT
     }
-    skill: SKILL_STEALTH_ROCKS
+    # Stealth Rock on the player's side at battle start.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
+      announce: "Pointed stones float in the air\\naround {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -100951,7 +101021,12 @@ trainer {
       move: MOVE_SUPERSONIC_SHOT
       move: MOVE_VENOM_BOLT
     }
-    skill: SKILL_PERMANENT_RAINBOW
+    # Permanent Rainbow on the trainer's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { field { side_condition { kind: RAINBOW side: RULE_FIELD_SIDE_TRAINER } turns: 0 } }
+      announce: "A rainbow appears in the sky over \\n{B_TRAINER1_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -103738,7 +103813,12 @@ trainer {
       move: MOVE_MYSTICAL_FIRE
       move: MOVE_AURA_SPHERE
     }
-    skill: SKILL_PERMANENT_RAINBOW
+    # Permanent Rainbow on the trainer's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { field { side_condition { kind: RAINBOW side: RULE_FIELD_SIDE_TRAINER } turns: 0 } }
+      announce: "A rainbow appears in the sky over \\n{B_TRAINER1_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -109568,7 +109648,12 @@ trainer {
       move: MOVE_RIP_AND_TEAR
       move: MOVE_JAW_LOCK
     }
-    skill: SKILL_PERMANENT_SWAMP
+    # Permanent Swamp on the player's side, put back whenever it ends.
+    rule {
+      trigger { always {} }
+      effect { field { side_condition { kind: SWAMP side: RULE_FIELD_SIDE_PLAYER } turns: 0 } }
+      announce: "A swamp envelops {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
@@ -111731,7 +111816,16 @@ trainer {
       move: MOVE_BUG_BITE
       move: MOVE_ELECTROWEB
     }
-    skill: SKILL_HAZARDS_ALL
+    # Every hazard on the player's side at battle start: Stealth Rock, Spikes, Toxic Spikes, Sticky Web.
+    rule {
+      trigger { battle_start {} }
+      effect { hazard { kind: STEALTH_ROCK side: RULE_FIELD_SIDE_PLAYER } }
+      effect { hazard { kind: SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      effect { hazard { kind: TOXIC_SPIKES side: RULE_FIELD_SIDE_PLAYER layers: 1 } }
+      effect { hazard { kind: STICKY_WEB side: RULE_FIELD_SIDE_PLAYER } }
+      name: "All Hazards"
+      announce: "All hazards were scattered around {B_PLAYER_NAME}'s team!"
+    }
   }
 }
 trainer {
