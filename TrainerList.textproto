@@ -9149,6 +9149,12 @@ trainer {
       move: MOVE_CUT
       move: MOVE_DIRE_CLAW
     }
+    # Last Pokemon sent out gets a +1 omniboost on switch-in.
+    rule {
+      trigger { entry {} }
+      filter { mon { last_remaining {} } }
+      effect { stat_change { stat: RULE_STAT_ALL amount: 1 } }
+    }
   }
 }
 trainer {
