@@ -46959,6 +46959,10 @@ trainer {
       move: MOVE_DRAGON_RAGE
       move: MOVE_EMBER
     }
+    rule {
+      trigger { always {} }
+      effect { ability: ABILITY_UNNERVE }
+    }
   }
 }
 trainer {
