@@ -29121,6 +29121,11 @@ trainer {
       move: MOVE_GUNK_SHOT
       move: MOVE_DRAGON_CLAW
     }
+    # Uses Tar Shot on entry
+    rule {
+      trigger { entry {} }
+      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_TAR_SHOT } }
+    }
   }
 }
 trainer {
@@ -32102,6 +32107,11 @@ trainer {
       move: MOVE_VICTORY_DANCE
       move: MOVE_PECK
       move: MOVE_POP_MAYHEM
+    }
+    # Raises attacking stat on entry
+    rule {
+      trigger { entry {} }
+      effect { stat_change { stat: RULE_STAT_HIGHEST_OFFENSE amount: 1 } }
     }
   }
 }
@@ -51892,6 +51902,11 @@ trainer {
       move: MOVE_POLTERGEIST
       move: MOVE_EARTHQUAKE
     }
+    # Uses substitute on switch in
+    rule {
+      trigger { entry {} }
+      effect { use_move { move: MOVE_SUBSTITUTE } }
+    }
   }
 }
 trainer {
@@ -64932,6 +64947,11 @@ trainer {
       move: MOVE_COSMIC_POWER
       move: MOVE_LIGHT_OF_RUIN
     }
+    # Enemy mons use Cosmic Power on entry
+    rule {
+      trigger { entry {} }
+      effect { use_move { move: MOVE_COSMIC_POWER } }
+    }
   }
 }
 trainer {
@@ -76312,6 +76332,12 @@ trainer {
       move: MOVE_SHELL_SMASH
       move: MOVE_CUT
     }
+    # Last Pokemon gets a +2 omniboost on switch-in.
+    rule {
+      trigger { entry {} }
+      filter { mon { last_remaining {} } }
+      effect { stat_change { stat: RULE_STAT_ALL amount: 2 } }
+    }
   }
 }
 trainer {
@@ -80813,6 +80839,11 @@ trainer {
       move: MOVE_BUG_BITE
       move: MOVE_STEAMROLLER
     }
+    # Leech Seed on entry
+    rule {
+      trigger { entry {} }
+      effect { target: RULE_TARGET_SUBJECT_FOES use_move { move: MOVE_LEECH_SEED } }
+    }
   }
 }
 trainer {
@@ -83431,6 +83462,11 @@ trainer {
       move: MOVE_BUG_BUZZ
       move: MOVE_QUIVER_DANCE
       move: MOVE_GIGA_DRAIN
+    }
+    # +1 to highest stat on entry
+    rule {
+      trigger { entry {} }
+      effect { stat_change { stat: RULE_STAT_HIGHEST amount: 1 } }
     }
   }
 }
